@@ -1,0 +1,44 @@
+[
+    {
+      "id": "C1",
+      "title": "Collaboration",
+      "type": "wordsearch",
+      "prompt": "Find TEAMWORK, TRUST, COLLABOR, SUPPORT, TRANSPARENCY, HARMONY",
+      "hashes": [
+        "$2b$10$tS5nvBXfzrc.40u4MVEU7OyCw/VDBrrYtYEDAyuTNLqTApT9DZw0m",
+        "$2b$10$kA84Pw9ZlKkDvYC4fgGpaeolt6u776vr4GgomWuVo3MAYTpA.0BAi",
+        "$2b$10$rHC/iGfqDHNfpaFBhfpBDOJOdlt14EYhHdIPL6T2AibzzPA5nBhyy",
+        "$2b$10$/1LSigG76xHJmD8cicPSReRYzYYwoc.hACejgYq9iprLibsIhdgoe",
+        "$2b$10$1T3uLkbxanyYs.N6Oyk0neIetuXyTZ2V0I/foCNSfT85ofhzHJ0pO",
+        "$2b$10$hlaABQwysB36oxh/FgJJ6OuyhNQXCTnp0RoS3km8Sby5Q2aforBfW"
+      ]
+    },
+    {
+      "id": "C2",
+      "title": "Customer Focus",
+      "type": "scenario",
+      "prompt": "Correct branch: Log feedback and acknowledge",
+      "hashes": [
+        "$2b$10$O.7wOOUnzIDXaVpGZ/HQ2.u0N5g23FHqvBe0KVbaum53haKiOF5Cm"
+      ]
+    },
+    {
+      "id": "C3",
+      "title": "Commitment",
+      "type": "math",
+      "prompt": "Answer: 25",
+      "hashes": [
+        "$2b$10$VdgVC0v0av8bGxnXjM/2ROgqsG5oyE4Pb3dcxFndrXZeSxUjO3OKq"
+      ]
+    },
+    {
+      "id": "C4",
+      "title": "Creativity",
+      "type": "riddle",
+      "prompt": "Answer: creativity",
+      "hashes": [
+        "$2b$10$HyO.O.bZpxXx9VMv.4OwB./J7AMMFp2ct8surepmv15Cba9M7rED."
+      ]
+    }
+  ]
+  
