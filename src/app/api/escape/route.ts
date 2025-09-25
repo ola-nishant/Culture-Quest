@@ -1,9 +1,11 @@
 import { NextResponse } from "next/server";
 
+const FINAL_KEY = "AQZ"; // must match PuzzleFlow
+
 export async function POST(req: Request) {
   try {
     const { token } = await req.json();
-    console.log("[POST] /api/escape token:", token ? "received" : "missing");
+    console.log("[POST] /api/escape token:", token);
 
     if (!token) {
       return NextResponse.json(
@@ -12,11 +14,17 @@ export async function POST(req: Request) {
       );
     }
 
-    console.log("Escape endpoint called, returning success");
-    return NextResponse.json({
-      escaped: true,
-      message: "Congratulations! You escaped.",
-    });
+    if (token === FINAL_KEY) {
+      return NextResponse.json({
+        escaped: true,
+        message: "Congratulations! You escaped.",
+      });
+    } else {
+      return NextResponse.json({
+        escaped: false,
+        message: "Wrong final code!",
+      });
+    }
   } catch (err) {
     console.error("Error in escape endpoint:", err);
     return NextResponse.json(
