@@ -31,9 +31,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
       >
         {/* Logo at the top center */}
-        <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-50">
+        <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-50 mt-2">
           <Image
-            src="/assets/logo.png" // Adjust the path to your logo
+            src="/logo.png" // Adjust the path to your logo
             alt="Logo"
             width={48} // Set the width of the logo
             height={48} // Set the height of the logo
