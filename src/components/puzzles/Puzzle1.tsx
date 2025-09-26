@@ -1,32 +1,44 @@
 "use client";
 import { useState } from "react";
+import { AceternityInput } from "../AceternityInput";
 
-export default function Puzzle1({ onSolve }: { onSolve: () => void }) {
-  const [answer, setAnswer] = useState("");
+export default function Puzzle1({ onSolved }: { onSolved: () => void }) {
+  const [feedback, setFeedback] = useState("");
 
-  const checkAnswer = () => {
-    if (answer.trim().toLowerCase() === "next") {
-      onSolve();
+  const handleAnswer = (val: string) => {
+    if (val.trim().toUpperCase() === "TEAMWORK") {
+      setFeedback("✅ Correct! Moving on...");
+      setTimeout(onSolved, 1000);
     } else {
-      alert("Wrong answer, try again!");
+      setFeedback("❌ Wrong answer, try again!");
     }
   };
 
+  const puzzlePlaceholders = [
+    "What brings teams together?",
+    "The key to collaboration is...",
+    "United we stand, divided we fall...",
+    "Many hands make light work...",
+    "Together everyone achieves more...",
+  ];
+
   return (
-    <div className="flex flex-col items-center gap-4">
-      <h2 className="text-2xl font-bold">Puzzle 1</h2>
-      <p className="text-gray-700">Type <b>next</b> to solve this puzzle.</p>
-      <input
-        className="border rounded p-2"
-        value={answer}
-        onChange={(e) => setAnswer(e.target.value)}
-      />
-      <button
-        onClick={checkAnswer}
-        className="bg-blue-500 text-white px-4 py-2 rounded"
-      >
-        Submit
-      </button>
+    <div className="p-8 bg-white dark:bg-zinc-900 rounded-xl shadow-lg w-full max-w-md mx-auto text-center">
+      <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Level 1: Collaboration</h2>
+      <p className="mb-6 text-gray-600 dark:text-gray-300">
+        Find the main secret word among TEAMWORK, TRUST, COLLABOR, SUPPORT, TRANSPARENCY, HARMONY.
+      </p>
+      <div className="mb-4">
+        <AceternityInput 
+          placeholders={puzzlePlaceholders}
+          onAnswer={handleAnswer} 
+        />
+      </div>
+      {feedback && (
+        <p className="mt-4 p-3 rounded-lg bg-gray-50 dark:bg-zinc-800 text-gray-900 dark:text-white">
+          {feedback}
+        </p>
+      )}
     </div>
   );
 }

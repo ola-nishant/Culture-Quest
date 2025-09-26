@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import Puzzle1 from "./puzzles/Puzzle1"; // Import Puzzle1 from its file
 import Puzzle2 from "./puzzles/Puzzle2";
 import Puzzle3 from "./puzzles/Puzzle3";
 import Puzzle4 from "./puzzles/Puzzle4";
@@ -73,45 +74,6 @@ function EscapedScreen() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-black text-white text-6xl font-extrabold">
       🎉 You Escaped!
-    </div>
-  );
-}
-
-// Puzzle 1 inline (others in /puzzles)
-function Puzzle1({ onSolved }: { onSolved: () => void }) {
-  const [answer, setAnswer] = useState("");
-  const [feedback, setFeedback] = useState("");
-
-  const handleSubmit = () => {
-    if (answer.trim().toUpperCase() === "TEAMWORK") {
-      setFeedback("✅ Correct! Moving on...");
-      setTimeout(onSolved, 1000);
-    } else {
-      setFeedback("❌ Wrong answer, try again!");
-    }
-  };
-
-  return (
-    <div className="p-6 bg-white rounded-xl shadow-md w-96 text-center">
-      <h2 className="text-2xl font-bold mb-4">Level 1: Collaboration</h2>
-      <p className="mb-4">
-        Find the main secret word among TEAMWORK, TRUST, COLLABOR, SUPPORT,
-        TRANSPARENCY, HARMONY.
-      </p>
-      <input
-        type="text"
-        value={answer}
-        onChange={(e) => setAnswer(e.target.value)}
-        placeholder="Type answer here (for testing: TEAMWORK)"
-        className="border p-2 rounded w-full mb-2 text-black"
-      />
-      <button
-        onClick={handleSubmit}
-        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-      >
-        Submit
-      </button>
-      {feedback && <p className="mt-2">{feedback}</p>}
     </div>
   );
 }

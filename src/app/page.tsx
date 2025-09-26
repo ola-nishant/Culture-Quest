@@ -6,6 +6,7 @@ export default function Home() {
     <main>
       <Toaster position="top-center" />
       <PuzzleFlow />
+
     </main>
   );
 }
