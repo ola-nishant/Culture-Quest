@@ -23,7 +23,7 @@ export default function Puzzle1({ onSolved }: { onSolved: () => void }) {
   ];
 
   return (
-    <div className="p-8 bg-white dark:bg-zinc-900 rounded-xl shadow-lg w-full max-w-md mx-auto text-center">
+    <div className="p-8 dark:bg-zinc-900 rounded-xl shadow-lg w-full max-w-md mx-auto text-center">
       <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Level 1: Collaboration</h2>
       <p className="mb-6 text-gray-600 dark:text-gray-300">
         Find the main secret word among TEAMWORK, TRUST, COLLABOR, SUPPORT, TRANSPARENCY, HARMONY.

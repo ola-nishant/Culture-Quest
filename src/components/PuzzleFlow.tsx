@@ -5,6 +5,7 @@ import Puzzle1 from "./puzzles/Puzzle1"; // Import Puzzle1 from its file
 import Puzzle2 from "./puzzles/Puzzle2";
 import Puzzle3 from "./puzzles/Puzzle3";
 import Puzzle4 from "./puzzles/Puzzle4";
+import { HoverBorderGradient } from "./ui/hover-border-gradient";
 
 const FINAL_KEY = "AQZ"; // expected concatenation of puzzle keys
 
@@ -42,17 +43,21 @@ export default function PuzzleFlow() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100 text-black">
+    <div className="flex min-h-screen items-center justify-center text-black">
       <Toaster position="top-center" />
       {step === 0 && (
-        <div className="p-6 bg-white rounded-xl shadow-md text-center">
-          <h1 className="text-4xl font-bold mb-6">Culture Quest</h1>
-          <button
-            className="bg-blue-500 text-white px-6 py-3 rounded hover:bg-blue-600"
-            onClick={() => setStep(1)}
-          >
-            Start Puzzle
-          </button>
+        <div className="p-6 text-white rounded-xl shadow-md text-center">
+          <h1 className="bg-clip-text text-transparent text-center bg-gradient-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-4xl lg:text-7xl font-sans py-2 md:py-10 relative z-20 font-bold tracking-tight">
+            Culture Quest
+          </h1>
+          <div className="flex justify-center">
+            <HoverBorderGradient
+              onClick={() => setStep(1)} // Set the step to 1 when clicked
+              className="px-6 py-2 text-white text-sm md:text-lg relative z-30"
+            >
+              Start Puzzle
+            </HoverBorderGradient>
+          </div>
         </div>
       )}
 
@@ -72,7 +77,7 @@ export default function PuzzleFlow() {
 // ✅ Escaped screen is fully isolated
 function EscapedScreen() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-black text-white text-6xl font-extrabold">
+    <div className="flex min-h-screen items-center justify-center text-white text-6xl font-extrabold">
       🎉 You Escaped!
     </div>
   );

@@ -1,5 +1,7 @@
+import Image from "next/image"; // Import the Image component
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { BackgroundRippleEffect } from "../components/ui/background-ripple-effect";
 
 import "./globals.css";
 
@@ -24,11 +26,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
       >
-        {children}
+        {/* Logo at the top center */}
+        <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-50">
+          <Image
+            src="/assets/logo.png" // Adjust the path to your logo
+            alt="Logo"
+            width={48} // Set the width of the logo
+            height={48} // Set the height of the logo
+            priority // Ensures the logo is loaded with high priority
+          />
+        </div>
+        <div className="absolute inset-0">
+          <BackgroundRippleEffect />
+        </div>
+        <div className="relative">{children}</div>
       </body>
     </html>
   );
