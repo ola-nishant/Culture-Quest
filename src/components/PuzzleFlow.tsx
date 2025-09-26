@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import Puzzle1 from "./puzzles/Puzzle1"; // Import Puzzle1 from its file
+import Puzzle1 from "./puzzles/Puzzle1"; 
 import Puzzle2 from "./puzzles/Puzzle2";
 import Puzzle3 from "./puzzles/Puzzle3";
 import Puzzle4 from "./puzzles/Puzzle4";
@@ -37,7 +37,6 @@ export default function PuzzleFlow() {
     }
   };
 
-  // 🚨 Once escaped, stop rendering puzzles entirely
   if (escaped) {
     return <EscapedScreen />;
   }
@@ -60,7 +59,7 @@ export default function PuzzleFlow() {
             <HoverBorderGradient
               onClick={() => {
                 setTimeout(() => {
-                  setStep(1); // Set the step to 1 after a 500ms delay
+                  setStep(1); 
                 }, 750);
               }}
               className="px-6 py-2 text-white text-sm md:text-lg relative z-30"
@@ -84,7 +83,6 @@ export default function PuzzleFlow() {
   );
 }
 
-// ✅ Escaped screen is fully isolated
 function EscapedScreen() {
   return (
     <div className="flex min-h-screen items-center justify-center text-white text-6xl font-extrabold">
