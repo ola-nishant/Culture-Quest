@@ -22,9 +22,8 @@ export default function Puzzle4({ onEscaped }: Puzzle4Props) {
       if (data.escaped) {
         setShowTerminal(true); 
         setTimeout(() => {
-          setShowTerminal(false); 
           onEscaped(); 
-        }, 6000); 
+        }, 5500); 
       } else {
         toast.error("Invalid token, try again!", {
           style: {
@@ -56,43 +55,42 @@ export default function Puzzle4({ onEscaped }: Puzzle4Props) {
     "Freedom awaits...",
   ];
 
-  return (
-    <div className="relative p-8 rounded-xl shadow-lg mx-auto text-center z-10">
-      {showTerminal && (
-        <div className="fixed inset-0 flex items-center text-left justify-center bg-opacity-75 z-50">
-          <Terminal>
-            <TypingAnimation className="text-red-500">
-              &gt; Verifying escape token...
-            </TypingAnimation>
-            <AnimatedSpan className="text-green-500">✔ Access granted!</AnimatedSpan>
-            <AnimatedSpan className="text-green-500">✔ Loading escape sequence...</AnimatedSpan>
-            <TypingAnimation className="text-muted-foreground">
-              Congratulations! You escaped!
-            </TypingAnimation>
-          </Terminal>
-        </div>
-      )}
+  if (showTerminal) {
+    return (
+      <div className="fixed inset-0 flex items-center justify-center bg-opacity-75 z-50">
+        <Terminal>
+          <TypingAnimation className="text-red-500">
+            &gt; Verifying escape token...
+          </TypingAnimation>
+          <AnimatedSpan className="text-green-500">✔ Access granted!</AnimatedSpan>
+          <AnimatedSpan className="text-green-500">✔ Loading escape sequence...</AnimatedSpan>
+          <TypingAnimation className="text-muted-foreground">
+            Congratulations! You escaped!
+          </TypingAnimation>
+        </Terminal>
+      </div>
+    );
+  }
 
-      {!showTerminal && (
-        <>
-          <div className="inline-block max-w-[340px]">
-            <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
-              Final Level: Escape
-            </h2>
-            <p className="text-gray-700 dark:text-gray-200 mb-6">
-              Enter the final escape token to break free.
-            </p>
-          </div>
-          <div className="text-gray-600 dark:text-gray-300 py-4 flex flex-col gap-6">
-            <div className="inline-block w-full">
-              <AceternityInput
-                placeholders={escapePlaceholders}
-                onAnswer={handleEscape}
-              />
-            </div>
-          </div>
-        </>
-      )}
+
+  return (
+    <div className="relative p-8 rounded-xl shadow-lg mx-auto text-center z-10 dark:bg-zinc-900">
+      <div className="inline-block max-w-[340px]">
+        <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+          Final Level: Escape
+        </h2>
+        <p className="text-gray-700 dark:text-gray-200 mb-6">
+          Enter the final escape token to break free.
+        </p>
+      </div>
+      <div className="text-gray-600 dark:text-gray-300 py-4 flex flex-col gap-6">
+        <div className="inline-block w-full">
+          <AceternityInput
+            placeholders={escapePlaceholders}
+            onAnswer={handleEscape}
+          />
+        </div>
+      </div>
     </div>
   );
 }
