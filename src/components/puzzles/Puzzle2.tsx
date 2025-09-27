@@ -1,52 +1,70 @@
 "use client";
 import { useState } from "react";
-
+import { toast } from "react-hot-toast"; 
 export default function Puzzle2({ onSolved }: { onSolved: () => void }) {
-  const [feedback, setFeedback] = useState("");
-
   const handleAnswer = (answer: string) => {
-    // Correct answer: 'rebalance'
     if (answer === "rebalance") {
-      setFeedback("✅ Correct! Moving on...");
+      toast.success("Correct! Moving on...", {
+        style: {
+          background: "#27272a",
+          color: "#fff",
+          borderRadius: "8px",
+          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+        },
+      });
       setTimeout(onSolved, 1000);
     } else {
-      setFeedback("❌ Wrong answer, try again!");
+      toast.error("Wrong answer, try again!", {
+        style: {
+          background: "#27272a",
+          color: "#fff",
+          borderRadius: "8px",
+          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+        },
+      });
     }
   };
 
   return (
-    <div className="p-6 bg-white rounded-xl shadow-md w-96 text-center">
-      <h2 className="text-2xl font-bold mb-4">Level 2: Customer Focus</h2>
-      <p className="mb-4">
-        You are in a high-stakes virtual meeting. Due to the festive season, deadlines are tight, and people are tense. What action will bring out the best in the team?
-      </p>
-      <div className="flex flex-col gap-2">
+    <div className="p-8 dark:bg-zinc-900 rounded-xl shadow-lg mx-auto text-center z-10 ml-2 mr-2">
+      <div className="inline-block max-w-[340px]">
+        <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+          Level 2: Customer Focus
+        </h2>
+        <p className="text-gray-700 dark:text-gray-200 mb-6">
+          You are in a high-stakes virtual meeting. Due to the festive season,
+          deadlines are tight, and people are tense. What action will bring out
+          the best in the team?
+        </p>
+      </div>
+      <div className="text-gray-600 dark:text-gray-300 py-4 flex flex-col gap-2 max-w-[360px]">
         <button
           onClick={() => handleAnswer("boost_morale")}
-          className="border p-2 rounded"
+          className="border border-gray-300 dark:border-gray-700 p-2 rounded-lg hover:bg-[#27272a] dark:hover:bg-[#27272a] transition"
         >
-          Boost morale with a promise: “We’ll push through this together — no matter what. Dinner’s on me after we finish.”
+          Boost morale with a promise: “We’ll push through this together - no matter
+          what. Dinner’s on me after we finish.”
         </button>
         <button
           onClick={() => handleAnswer("step_back")}
-          className="border p-2 rounded"
+          className="border border-gray-300 dark:border-gray-700 p-2 rounded-lg hover:bg-[#27272a] dark:hover:bg-[#27272a] transition"
         >
-          Step back quietly to avoid adding pressure, and trust that the team will find their own rhythm.
+          Step back quietly to avoid adding pressure, and trust that the team will
+          find their own rhythm.
         </button>
         <button
           onClick={() => handleAnswer("rebalance")}
-          className="border p-2 rounded bg-blue-50"
+          className="border border-gray-300 dark:border-gray-700 p-2 rounded-lg hover:bg-[#27272a] dark:hover:bg-[#27272a] transition"
         >
-          Acknowledge the stress, offer to rebalance workload (Correct)
+          Acknowledge the stress, offer to rebalance workload
         </button>
         <button
           onClick={() => handleAnswer("tighter_policies")}
-          className="border p-2 rounded"
+          className="border border-gray-300 dark:border-gray-700 p-2 rounded-lg hover:bg-[#27272a] dark:hover:bg-[#27272a] transition"
         >
           Set tighter policies for the future so that deadlines aren't missed again.
         </button>
       </div>
-      {feedback && <p className="mt-2">{feedback}</p>}
     </div>
   );
 }

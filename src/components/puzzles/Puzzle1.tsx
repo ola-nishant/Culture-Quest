@@ -50,7 +50,7 @@ export default function Puzzle1({ onSolved }: { onSolved: () => void }) {
   ];
 
   return (
-    <div className="p-8 dark:bg-zinc-900 rounded-xl shadow-lg mx-auto text-center z-10">
+    <div className="p-8 dark:bg-zinc-900 rounded-xl shadow-lg mx-auto text-center z-10 ml-2 mr-2">
       <div className="inline-block max-w-[340px]">
         <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
           Level 1
