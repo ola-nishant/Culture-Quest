@@ -16,14 +16,6 @@ export default function PuzzleFlow() {
   const [escaped, setEscaped] = useState(false);
 
   const handleSolved = (keyPart: string) => {
-    // toast.success(`Puzzle solved! Key part: ${keyPart}`, {
-    //   style: {
-    //     background: "#27272a",
-    //     color: "#fff",
-    //     borderRadius: "8px",
-    //     boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-    //   },
-    // });
     setClues((prev) => [...prev, keyPart]);
     setStep((prev) => prev + 1);
   };

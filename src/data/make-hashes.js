@@ -1,10 +1,10 @@
-const bcrypt = require("bcrypt");
+import bcrypt from "bcrypt";
 
-const answers = {
+const answers: Record<string, string[]> = {
   C1: ["teamwork"],
   C2: ["log feedback and acknowledge"],
   C3: ["courage"],
-  C4: ["creativity"]
+  C4: ["creativity"],
 };
 
 (async () => {

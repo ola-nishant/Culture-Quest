@@ -60,8 +60,8 @@ export default function Puzzle2({ onSolved }: { onSolved: () => void }) {
           onClick={() => handleAnswer("boost_morale")}
           className="border border-gray-300 dark:border-gray-700 p-2 rounded-lg hover:bg-[#27272a] dark:hover:bg-[#27272a] transition text-sm md:text-md text-[#f5f5f5] dark:text-[#f5f5f5] text-center"
         >
-          Boost morale with a promise: “We’ll push through this together - no matter
-          what. Dinner’s on me after we finish.”
+          Boost morale with a promise: &quot;We&apos;ll push through this together - no matter
+what. Dinner&apos;s on me after we finish.&quot;
         </button>
         <button
           onClick={() => handleAnswer("step_back")}
@@ -80,7 +80,7 @@ export default function Puzzle2({ onSolved }: { onSolved: () => void }) {
           onClick={() => handleAnswer("tighter_policies")}
           className="border border-gray-300 dark:border-gray-700 p-2 rounded-lg hover:bg-[#27272a] dark:hover:bg-[#27272a] transition text-sm md:text-md text-[#f5f5f5] dark:text-[#f5f5f5] text-center"
         >
-          Set tighter policies for the future so that deadlines aren't missed again.
+          Set tighter policies for the future so that deadlines aren&apos;t missed again.
         </button>
       </div>
     </div>
