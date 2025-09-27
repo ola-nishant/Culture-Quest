@@ -62,15 +62,33 @@ export default function Puzzle1({ onSolved }: { onSolved: () => void }) {
       </div>
       <div className="text-gray-600 dark:text-gray-300 py-4 flex flex-col gap-6">
         <div className="inline-block">
-          <HyperText>Z K Q T H N O P R W A Y B C D E F G H I J</HyperText>
-          <HyperText>C X D M U I V B J K L Z Q W R T Y U O P S</HyperText>
-          <HyperText>O B C O A R G E W N Q H M L K E I F D S T</HyperText>
-          <HyperText>Q V R J E S F R U T D M A P X A C G H I K</HyperText>
-          <HyperText>P E R S E V E R A N C X L M N M Q R S T U</HyperText>
-          <HyperText>L H Y P A S S W O N X U B Q D W F G H J K</HyperText>
-          <HyperText>B R A W E H A E R T F O V I L O M P Q S T</HyperText>
-          <HyperText>U N X L T R U S Y T E M W A B R D F G H I</HyperText>
-          <HyperText>R A U T H E N T I C I T K L M K O P Q S V</HyperText>
+          <HyperText className="whitespace-nowrap overflow-hidden text-ellipsis">
+            Z K Q T H N O P R W A Y B C D E F G H I J
+          </HyperText>
+          <HyperText className="whitespace-nowrap overflow-hidden text-ellipsis">
+            C X D M U I V B J K L Z Q W R T Y U O P S
+          </HyperText>
+          <HyperText className="whitespace-nowrap overflow-hidden text-ellipsis">
+            O B C O A R G E W N Q H M L K E I F D S T
+          </HyperText>
+          <HyperText className="whitespace-nowrap overflow-hidden text-ellipsis">
+            Q V R J E S F R U T D M A P X A C G H I K
+          </HyperText>
+          <HyperText className="whitespace-nowrap overflow-hidden text-ellipsis">
+            P E R S E V E R A N C X L M N M Q R S T U
+          </HyperText>
+          <HyperText className="whitespace-nowrap overflow-hidden text-ellipsis">
+            L H Y P A S S W O N X U B Q D W F G H J K
+          </HyperText>
+          <HyperText className="whitespace-nowrap overflow-hidden text-ellipsis">
+            B R A W E H A E R T F O V I L O M P Q S T
+          </HyperText>
+          <HyperText className="whitespace-nowrap overflow-hidden text-ellipsis">
+            U N X L T R U S Y T E M W A B R D F G H I
+          </HyperText>
+          <HyperText className="whitespace-nowrap overflow-hidden text-ellipsis">
+            R A U T H E N T I C I T K L M K O P Q S V
+          </HyperText>
         </div>
         <div className="inline-block w-full">
           <AceternityInput

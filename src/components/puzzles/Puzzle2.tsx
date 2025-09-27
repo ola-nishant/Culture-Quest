@@ -40,27 +40,27 @@ export default function Puzzle2({ onSolved }: { onSolved: () => void }) {
       <div className="text-gray-600 dark:text-gray-300 py-4 flex flex-col gap-2 max-w-[360px]">
         <button
           onClick={() => handleAnswer("boost_morale")}
-          className="border border-gray-300 dark:border-gray-700 p-2 rounded-lg hover:bg-[#27272a] dark:hover:bg-[#27272a] transition"
+          className="border border-gray-300 dark:border-gray-700 p-2 rounded-lg hover:bg-[#27272a] dark:hover:bg-[#27272a] transition text-sm md:text-md text-[#f5f5f5b7] dark:text-[#f5f5f5b7] text-center"
         >
           Boost morale with a promise: “We’ll push through this together - no matter
           what. Dinner’s on me after we finish.”
         </button>
         <button
           onClick={() => handleAnswer("step_back")}
-          className="border border-gray-300 dark:border-gray-700 p-2 rounded-lg hover:bg-[#27272a] dark:hover:bg-[#27272a] transition"
+          className="border border-gray-300 dark:border-gray-700 p-2 rounded-lg hover:bg-[#27272a] dark:hover:bg-[#27272a] transition text-sm md:text-md text-[#f5f5f5b7] dark:text-[#f5f5f5b7] text-center"
         >
           Step back quietly to avoid adding pressure, and trust that the team will
           find their own rhythm.
         </button>
         <button
           onClick={() => handleAnswer("rebalance")}
-          className="border border-gray-300 dark:border-gray-700 p-2 rounded-lg hover:bg-[#27272a] dark:hover:bg-[#27272a] transition"
+          className="border border-gray-300 dark:border-gray-700 p-2 rounded-lg hover:bg-[#27272a] dark:hover:bg-[#27272a] transition text-sm md:text-md text-[#f5f5f5b7] dark:text-[#f5f5f5b7] text-center"
         >
           Acknowledge the stress, offer to rebalance workload
         </button>
         <button
           onClick={() => handleAnswer("tighter_policies")}
-          className="border border-gray-300 dark:border-gray-700 p-2 rounded-lg hover:bg-[#27272a] dark:hover:bg-[#27272a] transition"
+          className="border border-gray-300 dark:border-gray-700 p-2 rounded-lg hover:bg-[#27272a] dark:hover:bg-[#27272a] transition text-sm md:text-md text-[#f5f5f5b7] dark:text-[#f5f5f5b7] text-center"
         >
           Set tighter policies for the future so that deadlines aren't missed again.
         </button>
