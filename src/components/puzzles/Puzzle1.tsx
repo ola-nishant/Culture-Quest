@@ -1,5 +1,5 @@
 "use client";
-import { toast } from "react-hot-toast"; 
+import { toast } from "react-hot-toast";
 import { AceternityInput } from "../AceternityInput";
 import { HyperText } from "../ui/hyper-text";
 import bcrypt from "bcryptjs";
@@ -15,7 +15,9 @@ export default function Puzzle1({ onSolved }: { onSolved: () => void }) {
 
     const normalizedInput = val.trim().toLowerCase();
 
-    const isCorrect = puzzle.hashes.some((hash) => bcrypt.compareSync(normalizedInput, hash));
+    const isCorrect = puzzle.hashes.some((hash) =>
+      bcrypt.compareSync(normalizedInput, hash)
+    );
 
     if (isCorrect) {
       toast.success("Correct! Moving on...", {
@@ -26,7 +28,7 @@ export default function Puzzle1({ onSolved }: { onSolved: () => void }) {
           boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
         },
       });
-      setTimeout(onSolved, 1000); 
+      setTimeout(onSolved, 1000);
     } else {
       toast.error("Wrong answer, try again!", {
         style: {
@@ -49,9 +51,15 @@ export default function Puzzle1({ onSolved }: { onSolved: () => void }) {
 
   return (
     <div className="p-8 dark:bg-zinc-900 rounded-xl shadow-lg mx-auto text-center z-10">
-      <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
-        Level 1: Collaboration
-      </h2>
+      <div className="inline-block max-w-[340px]">
+        <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+          Level 1
+        </h2>
+        <p className="text-gray-700 dark:text-gray-200 mb-6">
+          Find the word that represents the core valueof working together to
+          achieve a common goal.
+        </p>
+      </div>
       <div className="text-gray-600 dark:text-gray-300 py-4 flex flex-col gap-6">
         <div className="inline-block">
           <HyperText>Z K Q T H N O P R W A Y B C D E F G H I J</HyperText>
