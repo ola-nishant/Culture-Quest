@@ -5,8 +5,8 @@ export default function Puzzle2({ onSolved }: { onSolved: () => void }) {
   const [feedback, setFeedback] = useState("");
 
   const handleAnswer = (answer: string) => {
-    // Correct answer for testing: 'log_ack'
-    if (answer === "log_ack") {
+    // Correct answer: 'rebalance'
+    if (answer === "rebalance") {
       setFeedback("✅ Correct! Moving on...");
       setTimeout(onSolved, 1000);
     } else {
@@ -17,19 +17,33 @@ export default function Puzzle2({ onSolved }: { onSolved: () => void }) {
   return (
     <div className="p-6 bg-white rounded-xl shadow-md w-96 text-center">
       <h2 className="text-2xl font-bold mb-4">Level 2: Customer Focus</h2>
-      <p className="mb-4">A customer has raised urgent feedback late at night. What would you do?</p>
+      <p className="mb-4">
+        You are in a high-stakes virtual meeting. Due to the festive season, deadlines are tight, and people are tense. What action will bring out the best in the team?
+      </p>
       <div className="flex flex-col gap-2">
         <button
-          onClick={() => handleAnswer("ignore")}
+          onClick={() => handleAnswer("boost_morale")}
           className="border p-2 rounded"
         >
-          Ignore till next day
+          Boost morale with a promise: “We’ll push through this together — no matter what. Dinner’s on me after we finish.”
         </button>
         <button
-          onClick={() => handleAnswer("log_ack")}
+          onClick={() => handleAnswer("step_back")}
+          className="border p-2 rounded"
+        >
+          Step back quietly to avoid adding pressure, and trust that the team will find their own rhythm.
+        </button>
+        <button
+          onClick={() => handleAnswer("rebalance")}
           className="border p-2 rounded bg-blue-50"
         >
-          Log feedback, acknowledge (Correct)
+          Acknowledge the stress, offer to rebalance workload (Correct)
+        </button>
+        <button
+          onClick={() => handleAnswer("tighter_policies")}
+          className="border p-2 rounded"
+        >
+          Set tighter policies for the future so that deadlines aren't missed again.
         </button>
       </div>
       {feedback && <p className="mt-2">{feedback}</p>}
