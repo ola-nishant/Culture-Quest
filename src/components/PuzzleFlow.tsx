@@ -6,32 +6,32 @@ import Puzzle2 from "./puzzles/Puzzle2";
 import Puzzle3 from "./puzzles/Puzzle3";
 import Puzzle4 from "./puzzles/Puzzle4";
 import { HoverBorderGradient } from "./ui/hover-border-gradient";
-import EscapedScreen from "./EscapedScreen"; 
+import EscapedScreen from "./EscapedScreen";
 
-const FINAL_KEY = "AQZ"; // expected concatenation of puzzle keys
+const FINAL_KEY = "CURIOUS"; // expected concatenation of puzzle keys
 
 export default function PuzzleFlow() {
   const [step, setStep] = useState(0);
   const [clues, setClues] = useState<string[]>([]);
   const [escaped, setEscaped] = useState(false);
 
-  const handleSolved = (letter: string, number: number) => {
-    toast.success(`Puzzle solved! Key #${number}: ${letter}`, {
-      style: {
-        background: "#27272a", 
-        color: "#fff",
-        borderRadius: "8px",
-        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-      },
-    });
-    setClues((prev) => [...prev, letter]);
+  const handleSolved = (keyPart: string) => {
+    // toast.success(`Puzzle solved! Key part: ${keyPart}`, {
+    //   style: {
+    //     background: "#27272a",
+    //     color: "#fff",
+    //     borderRadius: "8px",
+    //     boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+    //   },
+    // });
+    setClues((prev) => [...prev, keyPart]);
     setStep((prev) => prev + 1);
   };
 
   const handleEscape = async () => {
     if (escaped) return; // block repeat submissions
 
-    const token = clues.join(""); // concatenated string
+    const token = clues.join(""); // concatenate all clues
     const res = await fetch("/api/escape", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -78,15 +78,10 @@ export default function PuzzleFlow() {
         </div>
       )}
 
-      {step === 1 && <Puzzle1 onSolved={() => handleSolved("A", 1)} />}
-      {step === 2 && <Puzzle2 onSolved={() => handleSolved("Q", 2)} />}
-      {step === 3 && <Puzzle3 onSolved={() => handleSolved("Z", 3)} />}
-      {step === 4 && (
-        <Puzzle4
-          onEscaped={handleEscape}
-          showClues={clues} // optional: show clues back
-        />
-      )}
+      {step === 1 && <Puzzle1 onSolved={() => handleSolved("CU")} />}
+      {step === 2 && <Puzzle2 onSolved={() => handleSolved("RI")} />}
+      {step === 3 && <Puzzle3 onSolved={() => handleSolved("OUS")} />}
+      {step === 4 && <Puzzle4 onEscaped={handleEscape} />}
     </div>
   );
 }

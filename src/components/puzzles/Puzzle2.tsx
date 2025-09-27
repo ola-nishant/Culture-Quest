@@ -1,20 +1,38 @@
 "use client";
-import { useState } from "react";
-import { toast } from "react-hot-toast"; 
+import { toast } from "react-hot-toast";
+
 export default function Puzzle2({ onSolved }: { onSolved: () => void }) {
-  const handleAnswer = (answer: string) => {
-    if (answer === "rebalance") {
-      toast.success("Correct! Moving on...", {
-        style: {
-          background: "#27272a",
-          color: "#fff",
-          borderRadius: "8px",
-          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-        },
+  const handleAnswer = async (answer: string) => {
+    try {
+      const res = await fetch("/api/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: "C2", answer }),
       });
-      setTimeout(onSolved, 1000);
-    } else {
-      toast.error("Wrong answer, try again!", {
+      const data = await res.json();
+      if (data.correct) {
+        toast.success("Correct! Second part of the key: RI", {
+          style: {
+            background: "#27272a",
+            color: "#fff",
+            borderRadius: "8px",
+            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+          },
+        });
+        setTimeout(onSolved, 1000);
+      } else {
+        toast.error("Wrong answer, try again!", {
+          style: {
+            background: "#27272a",
+            color: "#fff",
+            borderRadius: "8px",
+            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+          },
+        });
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error("Server error. Please try again later.", {
         style: {
           background: "#27272a",
           color: "#fff",
@@ -40,27 +58,27 @@ export default function Puzzle2({ onSolved }: { onSolved: () => void }) {
       <div className="text-gray-600 dark:text-gray-300 py-4 flex flex-col gap-2 max-w-[360px]">
         <button
           onClick={() => handleAnswer("boost_morale")}
-          className="border border-gray-300 dark:border-gray-700 p-2 rounded-lg hover:bg-[#27272a] dark:hover:bg-[#27272a] transition text-sm md:text-md text-[#f5f5f5b7] dark:text-[#f5f5f5b7] text-center"
+          className="border border-gray-300 dark:border-gray-700 p-2 rounded-lg hover:bg-[#27272a] dark:hover:bg-[#27272a] transition text-sm md:text-md text-[#f5f5f5] dark:text-[#f5f5f5] text-center"
         >
           Boost morale with a promise: “We’ll push through this together - no matter
           what. Dinner’s on me after we finish.”
         </button>
         <button
           onClick={() => handleAnswer("step_back")}
-          className="border border-gray-300 dark:border-gray-700 p-2 rounded-lg hover:bg-[#27272a] dark:hover:bg-[#27272a] transition text-sm md:text-md text-[#f5f5f5b7] dark:text-[#f5f5f5b7] text-center"
+          className="border border-gray-300 dark:border-gray-700 p-2 rounded-lg hover:bg-[#27272a] dark:hover:bg-[#27272a] transition text-sm md:text-md text-[#f5f5f5] dark:text-[#f5f5f5] text-center"
         >
           Step back quietly to avoid adding pressure, and trust that the team will
           find their own rhythm.
         </button>
         <button
-          onClick={() => handleAnswer("rebalance")}
-          className="border border-gray-300 dark:border-gray-700 p-2 rounded-lg hover:bg-[#27272a] dark:hover:bg-[#27272a] transition text-sm md:text-md text-[#f5f5f5b7] dark:text-[#f5f5f5b7] text-center"
+          onClick={() => handleAnswer("log feedback and acknowledge")}
+          className="border border-gray-300 dark:border-gray-700 p-2 rounded-lg hover:bg-[#27272a] dark:hover:bg-[#27272a] transition text-sm md:text-md text-[#f5f5f5] dark:text-[#f5f5f5] text-center"
         >
           Acknowledge the stress, offer to rebalance workload
         </button>
         <button
           onClick={() => handleAnswer("tighter_policies")}
-          className="border border-gray-300 dark:border-gray-700 p-2 rounded-lg hover:bg-[#27272a] dark:hover:bg-[#27272a] transition text-sm md:text-md text-[#f5f5f5b7] dark:text-[#f5f5f5b7] text-center"
+          className="border border-gray-300 dark:border-gray-700 p-2 rounded-lg hover:bg-[#27272a] dark:hover:bg-[#27272a] transition text-sm md:text-md text-[#f5f5f5] dark:text-[#f5f5f5] text-center"
         >
           Set tighter policies for the future so that deadlines aren't missed again.
         </button>

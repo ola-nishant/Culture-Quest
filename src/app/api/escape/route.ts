@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-const FINAL_KEY = "AQZ"; // must match PuzzleFlow
+const FINAL_KEY = "CURIOUS"; 
 
 export async function POST(req: Request) {
   try {

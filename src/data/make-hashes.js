@@ -1,9 +1,9 @@
 const bcrypt = require("bcrypt");
 
 const answers = {
-  C1: ["teamwork","trust","collabor","support","transparency","harmony"],
+  C1: ["teamwork"],
   C2: ["log feedback and acknowledge"],
-  C3: ["25"],
+  C3: ["courage"],
   C4: ["creativity"]
 };
 
@@ -16,5 +16,3 @@ const answers = {
     }
   }
 })();
-
-

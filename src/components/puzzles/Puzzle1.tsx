@@ -2,35 +2,39 @@
 import { toast } from "react-hot-toast";
 import { AceternityInput } from "../AceternityInput";
 import { HyperText } from "../ui/hyper-text";
-import bcrypt from "bcryptjs";
-import puzzles from "../../data/puzzles.json";
 
 export default function Puzzle1({ onSolved }: { onSolved: () => void }) {
-  const handleAnswer = (val: string) => {
-    const puzzle = puzzles.find((p) => p.id === "C1");
-    if (!puzzle || !puzzle.hashes) {
-      toast.error("Puzzle not found or hashes are missing!");
-      return;
-    }
-
-    const normalizedInput = val.trim().toLowerCase();
-
-    const isCorrect = puzzle.hashes.some((hash) =>
-      bcrypt.compareSync(normalizedInput, hash)
-    );
-
-    if (isCorrect) {
-      toast.success("Correct! Moving on...", {
-        style: {
-          background: "#27272a",
-          color: "#fff",
-          borderRadius: "8px",
-          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-        },
+  const handleAnswer = async (val: string) => {
+    try {
+      const res = await fetch("/api/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: "C1", answer: val }),
       });
-      setTimeout(onSolved, 1000);
-    } else {
-      toast.error("Wrong answer, try again!", {
+      const data = await res.json();
+      if (data.correct) {
+        toast.success("Correct! First part of the key: CU", {
+          style: {
+            background: "#27272a",
+            color: "#fff",
+            borderRadius: "8px",
+            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+          },
+        });
+        setTimeout(onSolved, 1000);
+      } else {
+        toast.error("Wrong answer, try again!", {
+          style: {
+            background: "#27272a",
+            color: "#fff",
+            borderRadius: "8px",
+            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+          },
+        });
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error("Server error. Please try again later.", {
         style: {
           background: "#27272a",
           color: "#fff",
@@ -56,7 +60,7 @@ export default function Puzzle1({ onSolved }: { onSolved: () => void }) {
           Level 1
         </h2>
         <p className="text-gray-700 dark:text-gray-200 mb-6">
-          Find the word that represents the core valueof working together to
+          Find the word that represents the core value of working together to
           achieve a common goal.
         </p>
       </div>
