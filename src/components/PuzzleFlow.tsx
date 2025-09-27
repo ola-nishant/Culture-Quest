@@ -16,7 +16,14 @@ export default function PuzzleFlow() {
   const [escaped, setEscaped] = useState(false);
 
   const handleSolved = (letter: string, number: number) => {
-    toast.success(`Puzzle solved! Key #${number}: ${letter}`);
+    toast.success(`Puzzle solved! Key #${number}: ${letter}`, {
+      style: {
+        background: "#27272a", 
+        color: "#fff",
+        borderRadius: "8px",
+        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+      },
+    });
     setClues((prev) => [...prev, letter]);
     setStep((prev) => prev + 1);
   };
@@ -34,7 +41,7 @@ export default function PuzzleFlow() {
     if (data.escaped) {
       setEscaped(true);
     } else {
-      toast.error("❌ Wrong final code!");
+      toast.error("Wrong final code!");
     }
   };
 

@@ -27,7 +27,7 @@ const getRandomInt = (max: number): number => Math.floor(Math.random() * max)
 export function HyperText({
   children,
   className,
-  duration = 4500,
+  duration = 2000,
   delay = 0,
   as: Component = "div",
   startOnView = true,
@@ -119,7 +119,7 @@ export function HyperText({
     <div className="user-select-none">
       <MotionComponent
         ref={elementRef}
-        className={cn("overflow-hidden py-2 text-small", className)}
+        className={cn("overflow-hidden py-1 text-xs md:text-sm", className)}
         onMouseEnter={handleAnimationTrigger}
         {...props}
       >
