@@ -6,7 +6,7 @@ export default function EscapedScreen() {
     <div className="relative flex min-h-screen items-center justify-center text-white">
 
       <div className="absolute inset-0 -z-20">
-        <BackgroundRippleEffect />
+        {/* <BackgroundRippleEffect /> */}
       </div>
 
 
