@@ -2,13 +2,25 @@
 import { toast } from "react-hot-toast"; 
 import { AceternityInput } from "../AceternityInput";
 import { HyperText } from "../ui/hyper-text";
+import bcrypt from "bcryptjs";
+import puzzles from "../../data/puzzles.json";
 
 export default function Puzzle1({ onSolved }: { onSolved: () => void }) {
   const handleAnswer = (val: string) => {
-    if (val.trim().toUpperCase() === "TEAMWORK") {
+    const puzzle = puzzles.find((p) => p.id === "C1");
+    if (!puzzle || !puzzle.hashes) {
+      toast.error("Puzzle not found or hashes are missing!");
+      return;
+    }
+
+    const normalizedInput = val.trim().toLowerCase();
+
+    const isCorrect = puzzle.hashes.some((hash) => bcrypt.compareSync(normalizedInput, hash));
+
+    if (isCorrect) {
       toast.success("Correct! Moving on...", {
         style: {
-          background: "#27272a", 
+          background: "#27272a",
           color: "#fff",
           borderRadius: "8px",
           boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
@@ -18,8 +30,8 @@ export default function Puzzle1({ onSolved }: { onSolved: () => void }) {
     } else {
       toast.error("Wrong answer, try again!", {
         style: {
-          background: "#27272a", 
-          color: "#fff", 
+          background: "#27272a",
+          color: "#fff",
           borderRadius: "8px",
           boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
         },
