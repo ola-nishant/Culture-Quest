@@ -38,7 +38,7 @@ export default function RootLayout({
           <Image
             src="/logo.png" 
             alt="Logo"
-            width={48} 
+            width={108} 
             height={48} 
             priority 
           />
