@@ -1,13 +1,13 @@
 "use client";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { toast } from "react-hot-toast";
 
 export default function Puzzle2({ onSolved }: { onSolved: () => void }) {
   const [currentLevel, setCurrentLevel] = useState(1);
 
-  const levels = {
+  const allLevels = {
     1: {
-      title: "Q1. Taking Ownership of a Mistake",
+      title: "Taking Ownership of a Mistake",
       description: "You've sent a client presentation that contains a small but important data error. Your manager hasn't noticed yet, and correcting it might mean admitting your mistake to the client. What should you do?",
       options: [
         { text: "Wait until the client raises it, then say it must have been a \"system error.\"", answer: "A" },
@@ -17,7 +17,7 @@ export default function Puzzle2({ onSolved }: { onSolved: () => void }) {
       correctAnswer: "B"
     },
     2: {
-      title: "Q2. Challenging a Senior's View",
+      title: "Challenging a Senior's View",
       description: "During a review meeting, a senior leader insists on using an old process you believe wastes time. Your data shows a better, faster way. What do you do?",
       options: [
         { text: "Stay silent — it's not wise to challenge a senior publicly.", answer: "A" },
@@ -27,7 +27,7 @@ export default function Puzzle2({ onSolved }: { onSolved: () => void }) {
       correctAnswer: "B"
     },
     3: {
-      title: "Q3. Taking Calculated Risks",
+      title: "Taking Calculated Risks",
       description: "Your team is hesitant to try a new, untested approach for a client project. The current method works but won't meet the client's aggressive timeline. How do you respond?",
       options: [
         { text: "Stick to the tried-and-tested route to avoid mistakes.", answer: "A" },
@@ -37,7 +37,7 @@ export default function Puzzle2({ onSolved }: { onSolved: () => void }) {
       correctAnswer: "B"
     },
     4: {
-      title: "Q4. Learning a New Tool",
+      title: "Learning a New Tool",
       description: "Your company is implementing a new project management platform. You're comfortable with Excel, but leadership wants everyone to switch. How do you handle it?",
       options: [
         { text: "Learn how the new tool can improve team collaboration and adapt to it willingly.", answer: "A" },
@@ -47,7 +47,7 @@ export default function Puzzle2({ onSolved }: { onSolved: () => void }) {
       correctAnswer: "A"
     },
     5: {
-      title: "Q5. Receiving Challenging Feedback",
+      title: "Receiving Challenging Feedback",
       description: "You present your analysis in a meeting, and a peer points out a major gap. You're caught off guard. What's your next move?",
       options: [
         { text: "Defend your work and argue that their feedback is irrelevant.", answer: "A" },
@@ -57,7 +57,7 @@ export default function Puzzle2({ onSolved }: { onSolved: () => void }) {
       correctAnswer: "B"
     },
     6: {
-      title: "Q6. Breaking a Deadlock",
+      title: "Breaking a Deadlock",
       description: "Two teams are stuck arguing over whose plan to follow, causing delays in a key project. What do you do?",
       options: [
         { text: "Step back and wait for leadership to intervene.", answer: "A" },
@@ -67,7 +67,7 @@ export default function Puzzle2({ onSolved }: { onSolved: () => void }) {
       correctAnswer: "B"
     },
     7: {
-      title: "Q7. Doing More with Less",
+      title: "Doing More with Less",
       description: "Your project budget has been cut by 20%, but deliverables remain the same. What's your response?",
       options: [
         { text: "Find innovative, low-cost alternatives to deliver quality despite constraints.", answer: "A" },
@@ -77,7 +77,7 @@ export default function Puzzle2({ onSolved }: { onSolved: () => void }) {
       correctAnswer: "A"
     },
     8: {
-      title: "Q8. Accelerating Execution",
+      title: "Accelerating Execution",
       description: "You discover two teams are unknowingly working on similar modules for a client project. What should you do?",
       options: [
         { text: "Suggest merging efforts and sharing progress to avoid duplication and deliver faster.", answer: "A" },
@@ -87,7 +87,7 @@ export default function Puzzle2({ onSolved }: { onSolved: () => void }) {
       correctAnswer: "A"
     },
     9: {
-      title: "Q9. Supporting a Struggling Colleague",
+      title: "Supporting a Struggling Colleague",
       description: "A team member confides that personal issues are affecting their work performance. You notice they're missing deadlines. What's the best approach?",
       options: [
         { text: "Offer empathy, discuss how the team can support them, and help prioritize tasks while maintaining accountability.", answer: "A" },
@@ -97,7 +97,7 @@ export default function Puzzle2({ onSolved }: { onSolved: () => void }) {
       correctAnswer: "A"
     },
     10: {
-      title: "Q10. Creating Inclusion in Meetings",
+      title: "Creating Inclusion in Meetings",
       description: "You notice that quieter members rarely speak up, while a few dominate every discussion. What do you do?",
       options: [
         { text: "Start inviting quieter members to share their perspectives directly and appreciate their inputs.", answer: "A" },
@@ -108,11 +108,25 @@ export default function Puzzle2({ onSolved }: { onSolved: () => void }) {
     }
   };
 
+  const selectedLevels = useMemo(() => {
+    const keys = Object.keys(allLevels).map(Number);
+    const shuffled = keys.sort(() => Math.random() - 0.5);
+    return shuffled.slice(0, 4);
+  }, []);
+
+  const levels = useMemo(() => {
+    const result: Record<number, typeof allLevels[1]> = {};
+    selectedLevels.forEach((originalKey, index) => {
+      result[index + 1] = allLevels[originalKey as keyof typeof allLevels];
+    });
+    return result;
+  }, [selectedLevels]);
+
   const handleAnswer = (answer: string) => {
     const level = levels[currentLevel as keyof typeof levels];
     
     if (answer === level.correctAnswer) {
-      if (currentLevel < 10) {
+      if (currentLevel < 4) {
         toast.success(`Correct! Moving to next question`, {
           style: {
             background: "#27272a",
@@ -124,7 +138,7 @@ export default function Puzzle2({ onSolved }: { onSolved: () => void }) {
         setTimeout(() => setCurrentLevel(currentLevel + 1), 1000);
       } else {
         toast.success("Puzzle Complete! Second part of the key: RI", {
-          duration: Infinity,
+          duration: 4000,
           style: {
             background: "#27272a",
             color: "#fff",

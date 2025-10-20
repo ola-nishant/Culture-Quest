@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-const FINAL_KEY = "CURIOUS"; 
+const FINAL_KEY = "curious"; 
 
 export async function POST(req: Request) {
   try {

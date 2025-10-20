@@ -42,7 +42,7 @@ export default function Puzzle1({ onSolved }: { onSolved: () => void }) {
       ],
       placeholders: [
         "Being open to new ideas",
-        "The word starts with B",
+        "Agreeing to unconventional approaches",
       ]
     },
     3: {

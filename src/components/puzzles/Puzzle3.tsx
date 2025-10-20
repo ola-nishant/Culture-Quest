@@ -8,18 +8,34 @@ interface Puzzle3Props {
 }
 
 export default function Puzzle3({ onSolved }: Puzzle3Props) {
-  const [answer, setAnswer] = useState("");
+  const [currentLevel, setCurrentLevel] = useState(1);
 
-  const handleSubmit = async (val: string) => {
-    try {
-      const res = await fetch("/api/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: "C3", answer: val }),
-      });
-      const data = await res.json();
-      if (data.correct) {
-        toast.success("Correct! Third part of the key: OUS", {
+  const levels = {
+    1: {
+      title: "Level 1: Innovation Cipher",
+      description: "Bot jt tfddpoe xpse jo uif dmvf \n\n Bravo Creative wizards, twist and turn the letters in the line below to reveal the hidden magic! Try replacing  each letter in the line below by the next letter, it might help",
+      answer: "creative",
+      placeholders: [
+        "Caesar had courage",
+      ]
+    },
+    2: {
+      title: "Level 2: Innovation Cipher",
+      description: "tenalp rehtlaeh a gninagimaeR\n\n",
+      answer: "reimagining a healthier planet",
+      placeholders: [
+        "Think outside the box",
+        "Challenge the status quo",
+      ]
+    }
+  };
+
+  const handleAnswer = (val: string) => {
+    const level = levels[currentLevel as keyof typeof levels];
+    console.log("Answer entered:", val, "correct answer is:", level.answer)
+    if (val.toLowerCase() === level.answer) {
+      if (currentLevel < 2) {
+        toast.success(`Correct! Moving to ${levels[currentLevel + 1 as keyof typeof levels].title}`, {
           style: {
             background: "#27272a",
             color: "#fff",
@@ -27,9 +43,10 @@ export default function Puzzle3({ onSolved }: Puzzle3Props) {
             boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
           },
         });
-        onSolved();
+        setTimeout(() => setCurrentLevel(currentLevel + 1), 1000);
       } else {
-        toast.error("Wrong answer, try again!", {
+        toast.success("Puzzle Complete! Third part of the key: OUS", {
+          duration: 4000,
           style: {
             background: "#27272a",
             color: "#fff",
@@ -37,10 +54,10 @@ export default function Puzzle3({ onSolved }: Puzzle3Props) {
             boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
           },
         });
+        setTimeout(onSolved, 1000);
       }
-    } catch (err) {
-      console.error(err);
-      toast.error("Server error. Please try again later.", {
+    } else {
+      toast.error("Wrong answer, try again!", {
         style: {
           background: "#27272a",
           color: "#fff",
@@ -51,28 +68,24 @@ export default function Puzzle3({ onSolved }: Puzzle3Props) {
     }
   };
 
-  const puzzlePlaceholders = [
-    "Caesar had courage",
-    "Solve the riddle to innovate...",
-  ];
+  const currentLevelData = levels[currentLevel as keyof typeof levels];
 
   return (
     <div className="p-8 dark:bg-zinc-900 rounded-xl shadow-lg mx-auto text-center z-10">
       <div className="inline-block max-w-[340px]">
         <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
-          Level 3: Innovation
+          {currentLevelData.title}
         </h2>
-        <p className="text-gray-700 dark:text-gray-200 mb-6">
-Xvh gluhfwob exw vshdn wkh wuxwk.
-Qhyhu klgh zkdw lv uljkw.
-Eh dffrxqwdeoh.
+        <p className="text-gray-700 dark:text-gray-200 mb-6 whitespace-pre-line">
+          {currentLevelData.description}
         </p>
       </div>
       <div className="text-gray-600 dark:text-gray-300 py-4 flex flex-col gap-6">
         <div className="inline-block w-full">
           <AceternityInput
-            placeholders={puzzlePlaceholders}
-            onAnswer={handleSubmit}
+            key={currentLevel}
+            placeholders={currentLevelData.placeholders}
+            onAnswer={handleAnswer}
           />
         </div>
       </div>

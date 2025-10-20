@@ -16,7 +16,7 @@ export default function Puzzle4({ onEscaped }: Puzzle4Props) {
       const res = await fetch("/api/escape", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ token: val }),
+        body: JSON.stringify({ token: val.toLowerCase() }),
       });
       const data = await res.json();
       if (data.escaped) {
