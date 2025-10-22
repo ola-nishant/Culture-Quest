@@ -10,7 +10,7 @@ import EscapedScreen from "./EscapedScreen";
 
 const FINAL_KEY = "CURIOUS"; // expected concatenation of puzzle keys
 
-export default function PuzzleFlow() {
+export default function PuzzleFlow({ onStartMusic }: { onStartMusic: () => void }) {
   const [step, setStep] = useState(0);
   const [clues, setClues] = useState<string[]>([]);
   const [escaped, setEscaped] = useState(false);
@@ -58,6 +58,7 @@ export default function PuzzleFlow() {
           <div className="flex justify-center mt-5">
             <HoverBorderGradient
               onClick={() => {
+                onStartMusic();
                 setTimeout(() => {
                   setStep(1);
                 }, 750);

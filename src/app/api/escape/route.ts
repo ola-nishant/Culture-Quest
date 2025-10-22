@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-const FINAL_KEY = "curious"; 
+const FINAL_KEY = "CURIOUS"; 
 
 export async function POST(req: Request) {
   try {
@@ -14,7 +14,7 @@ export async function POST(req: Request) {
       );
     }
 
-    if (token === FINAL_KEY) {
+    if (token.toUpperCase() === FINAL_KEY) {
       return NextResponse.json({
         escaped: true,
         message: "Congratulations! You escaped.",

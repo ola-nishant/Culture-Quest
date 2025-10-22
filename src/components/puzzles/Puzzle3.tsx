@@ -21,7 +21,7 @@ export default function Puzzle3({ onSolved }: Puzzle3Props) {
     },
     2: {
       title: "Level 2: Innovation Cipher",
-      description: "tenalp rehtlaeh a gninagimaeR\n\n",
+      description: "tenalp reihtlaeh a gninigamieR\n\n Forward is backwards, the past is the present, the clue is the answer.",
       answer: "reimagining a healthier planet",
       placeholders: [
         "Think outside the box",
