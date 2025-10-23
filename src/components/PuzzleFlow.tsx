@@ -45,7 +45,7 @@ export default function PuzzleFlow({ onStartMusic }: { onStartMusic: () => void 
     <div className="flex min-h-screen items-center justify-center text-black">
       <Toaster position="top-center" />
       {step === 0 && (
-        <div className="p-6 text-white rounded-xl shadow-md text-center">
+        <div className="p-6 text-white rounded-xl text-center">
           <h1 className="bg-clip-text text-transparent text-center bg-gradient-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-4xl lg:text-7xl font-sans py-2 md:py-5 relative z-20 font-bold tracking-tight">
             Culture Quest
           </h1>

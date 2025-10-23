@@ -163,7 +163,7 @@ export default function Puzzle2({ onSolved }: { onSolved: () => void }) {
   const currentLevelData = levels[currentLevel as keyof typeof levels];
 
   return (
-    <div className="p-8 dark:bg-zinc-900 rounded-xl shadow-lg mx-auto text-center z-10 ml-2 mr-2">
+    <div className="p-8 dark:bg-zinc-900 rounded-xl shadow-lg mx-auto text-center z-10 ml-2 mr-2 bg-white">
       <div className="inline-block max-w-[340px]">
         <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
           {currentLevelData.title}
@@ -177,7 +177,7 @@ export default function Puzzle2({ onSolved }: { onSolved: () => void }) {
           <button
             key={index}
             onClick={() => handleAnswer(option.answer)}
-            className="border border-gray-300 dark:border-gray-700 p-2 rounded-lg hover:bg-[#27272a] dark:hover:bg-[#27272a] transition text-sm md:text-md text-[#f5f5f5] dark:text-[#f5f5f5] text-center"
+            className="border border-gray-300 dark:border-gray-700 p-2 rounded-lg hover:bg-[#27272a] dark:hover:bg-[#27272a] transition text-sm md:text-md text-grey dark:text-[#f5f5f5] hover:text-white text-center"
           >
             {option.answer}. {option.text}
           </button>

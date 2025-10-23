@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <head>
         {/* Add the favicon */}
         <link rel="icon" href="/logo.svg" type="image/svg+xml" />
