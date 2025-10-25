@@ -74,7 +74,7 @@ export default function Puzzle4({ onEscaped }: Puzzle4Props) {
 
 
   return (
-    <div className="relative p-8 rounded-xl shadow-lg mx-auto text-center z-10 dark:bg-zinc-900">
+    <div className="relative p-8 rounded-xl shadow-lg mx-auto text-center z-10 bg-white dark:bg-zinc-900">
       <div className="inline-block max-w-[340px]">
         <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
           Final Level: Escape

@@ -12,7 +12,7 @@ export default function Puzzle3({ onSolved }: Puzzle3Props) {
 
   const levels = {
     1: {
-      title: "Level 1: Innovation Cipher",
+      title: "Level 3a: Innovation Cipher",
       description: "Bot jt tfddpoe xpse jo uif dmvf \n\n Bravo Creative wizards, twist and turn the letters in the line below to reveal the hidden magic! Try replacing each letter in the line below by the previous letter, it might help",
       answer: "creative",
       placeholders: [
@@ -20,7 +20,7 @@ export default function Puzzle3({ onSolved }: Puzzle3Props) {
       ]
     },
     2: {
-      title: "Level 2: Innovation Cipher",
+      title: "Level 3b: Innovation Cipher",
       description: "tenalp reihtlaeh a gninigamieR\n\n Forward is backwards, the past is the present, the clue is the answer.",
       answer: "reimagining a healthier planet",
       placeholders: [
@@ -71,7 +71,7 @@ export default function Puzzle3({ onSolved }: Puzzle3Props) {
   const currentLevelData = levels[currentLevel as keyof typeof levels];
 
   return (
-    <div className="p-8 dark:bg-zinc-900 rounded-xl shadow-lg mx-auto text-center z-10">
+    <div className="p-8 bg-white dark:bg-zinc-900 rounded-xl shadow-lg mx-auto text-center z-10">
       <div className="inline-block max-w-[340px]">
         <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
           {currentLevelData.title}
