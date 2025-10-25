@@ -13,7 +13,7 @@ export default function Puzzle3({ onSolved }: Puzzle3Props) {
   const levels = {
     1: {
       title: "Level 1: Innovation Cipher",
-      description: "Bot jt tfddpoe xpse jo uif dmvf \n\n Bravo Creative wizards, twist and turn the letters in the line below to reveal the hidden magic! Try replacing  each letter in the line below by the next letter, it might help",
+      description: "Bot jt tfddpoe xpse jo uif dmvf \n\n Bravo Creative wizards, twist and turn the letters in the line below to reveal the hidden magic! Try replacing each letter in the line below by the previous letter, it might help",
       answer: "creative",
       placeholders: [
         "Caesar had courage",

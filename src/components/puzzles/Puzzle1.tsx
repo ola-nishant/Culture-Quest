@@ -43,6 +43,7 @@ export default function Puzzle1({ onSolved }: { onSolved: () => void }) {
       placeholders: [
         "Being open to new ideas",
         "Agreeing to unconventional approaches",
+        "Starts with A",
       ]
     },
     3: {
@@ -62,8 +63,6 @@ export default function Puzzle1({ onSolved }: { onSolved: () => void }) {
         "What brings teams together?",
         "The key to teamwork is...",
         "United we stand, divided we fall...",
-        "Many hands make light work...",
-        "Together everyone achieves more..."
       ]
     }
   };
