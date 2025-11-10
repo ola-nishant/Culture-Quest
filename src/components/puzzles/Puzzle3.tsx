@@ -12,16 +12,17 @@ export default function Puzzle3({ onSolved }: Puzzle3Props) {
 
   const levels = {
     1: {
-      title: "Level 3a: Innovation Cipher",
-      description: "Bot jt tfddpoe xpse jo uif dmvf \n\n Bravo Creative wizards, twist and turn the letters in the line below to reveal the hidden magic! Try replacing each letter in the line below by the previous letter, it might help",
+      title: "Level 1 - Innovation Cipher",
+      description: "<strong>Bot jt tfddpoe xpse jo uif dmvf</strong>\n\n Bravo Creative wizards, twist and turn the letters in the line below to reveal the hidden magic! Try replacing each letter in the line below by the previous letter, it might help",
       answer: "creative",
       placeholders: [
-        "Caesar had courage",
+        "Move back one step",
+        "Slide the alphabet"
       ]
     },
     2: {
-      title: "Level 3b: Innovation Cipher",
-      description: "tenalp reihtlaeh a gninigamieR\n\n Forward is backwards, the past is the present, the clue is the answer.",
+      title: "Level 2 - Innovation Cipher",
+      description: "<strong>tenalp reihtlaeh a gninigamieR</strong>\n\n Forward is backwards, the past is the present, the clue is the answer.",
       answer: "reimagining a healthier planet",
       placeholders: [
         "Think outside the box",
@@ -43,7 +44,7 @@ export default function Puzzle3({ onSolved }: Puzzle3Props) {
             boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
           },
         });
-        setTimeout(() => setCurrentLevel(currentLevel + 1), 1000);
+        setTimeout(() => setCurrentLevel(currentLevel + 1), 800);
       } else {
         toast.success("Puzzle Complete! Third part of the key: OUS", {
           duration: 4000,
@@ -54,7 +55,7 @@ export default function Puzzle3({ onSolved }: Puzzle3Props) {
             boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
           },
         });
-        setTimeout(onSolved, 1000);
+        setTimeout(onSolved, 800);
       }
     } else {
       toast.error("Wrong answer, try again!", {
@@ -76,8 +77,8 @@ export default function Puzzle3({ onSolved }: Puzzle3Props) {
         <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
           {currentLevelData.title}
         </h2>
-        <p className="text-gray-700 dark:text-gray-200 mb-6 whitespace-pre-line">
-          {currentLevelData.description}
+        <p className="text-gray-700 dark:text-gray-200 mb-6 whitespace-pre-line"
+           dangerouslySetInnerHTML={{ __html: currentLevelData.description }}>
         </p>
       </div>
       <div className="text-gray-600 dark:text-gray-300 py-4 flex flex-col gap-6">

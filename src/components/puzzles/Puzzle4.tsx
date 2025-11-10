@@ -48,11 +48,11 @@ export default function Puzzle4({ onEscaped }: Puzzle4Props) {
   };
 
   const escapePlaceholders = [
-    "Enter the escape token...",
+    "Enter the escape token",
     "What will set you free?",
-    "The key to escape is...",
-    "Solve the final puzzle...",
-    "Freedom awaits...",
+    "The key to escape is",
+    "Solve the final puzzle",
+    "Freedom awaits",
   ];
 
   if (showTerminal) {
@@ -77,10 +77,10 @@ export default function Puzzle4({ onEscaped }: Puzzle4Props) {
     <div className="relative p-8 rounded-xl shadow-lg mx-auto text-center z-10 bg-white dark:bg-zinc-900">
       <div className="inline-block max-w-[340px]">
         <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
-          Final Level: Escape
+          Final Level – The Exit Code
         </h2>
         <p className="text-gray-700 dark:text-gray-200 mb-6">
-          Enter the final escape token to break free.
+          Enter your freedom key
         </p>
       </div>
       <div className="text-gray-600 dark:text-gray-300 py-4 flex flex-col gap-6">

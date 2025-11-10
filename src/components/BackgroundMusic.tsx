@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, forwardRef, useImperativeHandle } from "react";
 
-const BackgroundMusic = forwardRef<{ play: () => void }>((props, ref) => {
+const BackgroundMusic = forwardRef<{ play: () => void; stop: () => void }>((_props, ref) => {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   useImperativeHandle(ref, () => ({
@@ -10,6 +10,13 @@ const BackgroundMusic = forwardRef<{ play: () => void }>((props, ref) => {
       if (audio) {
         audio.volume = 0.3;
         audio.play().catch(console.error);
+      }
+    },
+    stop: () => {
+      const audio = audioRef.current;
+      if (audio) {
+        audio.pause();
+        audio.currentTime = 0;
       }
     }
   }));
