@@ -7,7 +7,7 @@ export default function Puzzle2({ onSolved }: { onSolved: () => void }) {
 
   const allLevels = {
     1: {
-      title: "Taking Ownership of a Mistake",
+      title: "The PI Dilemma",
       description: "You've sent a client presentation that contains a small but important data error. Your manager hasn't noticed yet, and correcting it might mean admitting your mistake to the client. What should you do?",
       options: [
         { text: "Wait until the client raises it, then say it must have been a \"system error.\"", answer: "A" },
@@ -17,7 +17,7 @@ export default function Puzzle2({ onSolved }: { onSolved: () => void }) {
       correctAnswer: "B"
     },
     2: {
-      title: "Challenging a Senior's View",
+      title: "The PI Dilemma",
       description: "During a review meeting, a senior leader insists on using an old process you believe wastes time. Your data shows a better, faster way. What do you do?",
       options: [
         { text: "Stay silent — it's not wise to challenge a senior publicly.", answer: "A" },
@@ -27,7 +27,7 @@ export default function Puzzle2({ onSolved }: { onSolved: () => void }) {
       correctAnswer: "B"
     },
     3: {
-      title: "Taking Calculated Risks",
+      title: "The PI Dilemma",
       description: "Your team is hesitant to try a new, untested approach for a client project. The current method works but won't meet the client's aggressive timeline. How do you respond?",
       options: [
         { text: "Stick to the tried-and-tested route to avoid mistakes.", answer: "A" },
@@ -37,7 +37,7 @@ export default function Puzzle2({ onSolved }: { onSolved: () => void }) {
       correctAnswer: "B"
     },
     4: {
-      title: "Learning a New Tool",
+      title: "The PI Dilemma",
       description: "Your company is implementing a new project management platform. You're comfortable with Excel, but leadership wants everyone to switch. How do you handle it?",
       options: [
         { text: "Learn how the new tool can improve team collaboration and adapt to it willingly.", answer: "A" },
@@ -47,7 +47,7 @@ export default function Puzzle2({ onSolved }: { onSolved: () => void }) {
       correctAnswer: "A"
     },
     5: {
-      title: "Receiving Challenging Feedback",
+      title: "The PI Dilemma",
       description: "You present your analysis in a meeting, and a peer points out a major gap. You're caught off guard. What's your next move?",
       options: [
         { text: "Defend your work and argue that their feedback is irrelevant.", answer: "A" },
@@ -57,7 +57,7 @@ export default function Puzzle2({ onSolved }: { onSolved: () => void }) {
       correctAnswer: "B"
     },
     6: {
-      title: "Breaking a Deadlock",
+      title: "The PI Dilemma",
       description: "Two teams are stuck arguing over whose plan to follow, causing delays in a key project. What do you do?",
       options: [
         { text: "Step back and wait for leadership to intervene.", answer: "A" },
@@ -67,7 +67,7 @@ export default function Puzzle2({ onSolved }: { onSolved: () => void }) {
       correctAnswer: "B"
     },
     7: {
-      title: "Doing More with Less",
+      title: "The PI Dilemma",
       description: "Your project budget has been cut by 20%, but deliverables remain the same. What's your response?",
       options: [
         { text: "Find innovative, low-cost alternatives to deliver quality despite constraints.", answer: "A" },
@@ -77,7 +77,7 @@ export default function Puzzle2({ onSolved }: { onSolved: () => void }) {
       correctAnswer: "A"
     },
     8: {
-      title: "Accelerating Execution",
+      title: "The PI Dilemma",
       description: "You discover two teams are unknowingly working on similar modules for a client project. What should you do?",
       options: [
         { text: "Suggest merging efforts and sharing progress to avoid duplication and deliver faster.", answer: "A" },
@@ -87,7 +87,7 @@ export default function Puzzle2({ onSolved }: { onSolved: () => void }) {
       correctAnswer: "A"
     },
     9: {
-      title: "Supporting a Struggling Colleague",
+      title: "The PI Dilemma",
       description: "A team member confides that personal issues are affecting their work performance. You notice they're missing deadlines. What's the best approach?",
       options: [
         { text: "Offer empathy, discuss how the team can support them, and help prioritize tasks while maintaining accountability.", answer: "A" },
@@ -97,7 +97,7 @@ export default function Puzzle2({ onSolved }: { onSolved: () => void }) {
       correctAnswer: "A"
     },
     10: {
-      title: "Creating Inclusion in Meetings",
+      title: "The PI Dilemma",
       description: "You notice that quieter members rarely speak up, while a few dominate every discussion. What do you do?",
       options: [
         { text: "Start inviting quieter members to share their perspectives directly and appreciate their inputs.", answer: "A" },
@@ -135,7 +135,7 @@ export default function Puzzle2({ onSolved }: { onSolved: () => void }) {
             boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
           },
         });
-        setTimeout(() => setCurrentLevel(currentLevel + 1), 1000);
+        setTimeout(() => setCurrentLevel(currentLevel + 1), 800);
       } else {
         toast.success("Puzzle Complete! Second part of the key: RI", {
           duration: 4000,
@@ -146,7 +146,7 @@ export default function Puzzle2({ onSolved }: { onSolved: () => void }) {
             boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
           },
         });
-        setTimeout(onSolved, 1000);
+        setTimeout(onSolved, 800);
       }
     } else {
       toast.error("Wrong answer, try again!", {
@@ -166,7 +166,7 @@ export default function Puzzle2({ onSolved }: { onSolved: () => void }) {
     <div className="p-8 dark:bg-zinc-900 rounded-xl shadow-lg mx-auto text-center z-10 ml-2 mr-2 bg-white">
       <div className="inline-block max-w-[340px]">
         <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
-          {currentLevelData.title}
+          Level {currentLevel} - {currentLevelData.title}
         </h2>
         <p className="text-gray-700 dark:text-gray-200 mb-6">
           {currentLevelData.description}

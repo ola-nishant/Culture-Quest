@@ -30,6 +30,11 @@ export function AceternityInput({
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const startAnimation = useCallback(() => {
+    // Clear any existing interval first
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+    
     intervalRef.current = setInterval(() => {
       setCurrentPlaceholder(
         (prev) => (prev + 1) % placeholders.length
@@ -37,19 +42,32 @@ export function AceternityInput({
     }, 3000);
   }, [placeholders.length]);
 
-  const handleVisibilityChange = useCallback(() => {
-    if (document.visibilityState !== "visible" && intervalRef.current) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = null;
-    } else if (document.visibilityState === "visible") {
-      startAnimation();
-    }
-  }, [startAnimation]);
-
   useEffect(() => {
-    handleVisibilityChange();
+    // Start the initial animation
     startAnimation();
-  }, [handleVisibilityChange, startAnimation]);
+
+    // Set up visibility change listener
+    const handleVisibility = () => {
+      if (document.visibilityState !== "visible") {
+        if (intervalRef.current) {
+          clearInterval(intervalRef.current);
+          intervalRef.current = null;
+        }
+      } else {
+        startAnimation();
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibility);
+
+    // Cleanup on unmount
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+      document.removeEventListener("visibilitychange", handleVisibility);
+    };
+  }, [startAnimation]);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const newDataRef = useRef<

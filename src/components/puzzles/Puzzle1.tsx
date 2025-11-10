@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, Fragment } from "react";
 import { toast } from "react-hot-toast";
 import { AceternityInput } from "../AceternityInput";
 import { HyperText } from "../ui/hyper-text";
@@ -10,8 +10,8 @@ export default function Puzzle1({ onSolved }: { onSolved: () => void }) {
   const levels = {
     1: {
       answer: "bold",
-      title: "Level 1",
-      description: "Find the word across or vertical",
+      title: "Level 1 - The Value Grid",
+      description: "Find it across or down.\nThe hint lies within the definition of PI’s 4Cs!",
       grid: [
         "Z K Q T H N O P R W A Y B C D",
         "C X D M U I V B J K L Z Q W R",
@@ -22,15 +22,15 @@ export default function Puzzle1({ onSolved }: { onSolved: () => void }) {
         "B R A W E H A E R T F O V I L"
       ],
       placeholders: [
-        "The spirit of taking initiative",
-        "Standing for what is right",
-        "The word starts with B",
+        "It shows strength with heart",
+        "It means being confident & brave",
+        "It starts with B",
       ]
     },
     2: {
       answer: "acceptable",
-      title: "Level 2", 
-      description: "Find the word across or vertical",
+      title: "Level 2 - The Value Grid", 
+      description: "Find it across or down.\nThe hint lies within the definition of PI’s 4Cs!",
       grid: [
         "Z X C V B N M Q W E R T Y U I",
         "Q W E R T Y U I O P L K J H G",
@@ -41,15 +41,15 @@ export default function Puzzle1({ onSolved }: { onSolved: () => void }) {
         "I O P L K J H G F D S A Z X C"
       ],
       placeholders: [
-        "Being open to new ideas",
-        "Agreeing to unconventional approaches",
-        "Starts with A",
+        "It is about being open to ideas",
+        "It means welcoming new ways",
+        "It starts with A",
       ]
     },
     3: {
       answer: "collaborate",
-      title: "Level 3",
-      description: "Find the word across or vertical",
+      title: "Level 3 - The Value Grid",
+      description: "Find it across or down.\nThe hint lies within the definition of PI’s 4Cs!",
       grid: [
         "Z X C V B N M Q W E R T Y U I",
         "Q W E R T Y U I O P L K J H G",
@@ -60,9 +60,9 @@ export default function Puzzle1({ onSolved }: { onSolved: () => void }) {
         "I O P L K J H G F D S A Z X C"
       ],
       placeholders: [
-        "What brings teams together?",
-        "The key to teamwork is...",
-        "United we stand, divided we fall...",
+        "It starts with C",
+        "It makes ideas grow",
+        "United we stand, divided we fall",
       ]
     }
   };
@@ -73,31 +73,39 @@ export default function Puzzle1({ onSolved }: { onSolved: () => void }) {
     if (val.toLowerCase() === level.answer) {
       if (currentLevel < 3) {
         toast.success(`Correct! Moving to ${levels[currentLevel + 1 as keyof typeof levels].title}`, {
+          duration: 5000,
           style: {
             background: "#27272a",
             color: "#fff",
+            fontSize: "1.1rem",
+            padding: "16px",
             borderRadius: "8px",
             boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
           },
         });
-        setTimeout(() => setCurrentLevel(currentLevel + 1), 1000);
+        setTimeout(() => setCurrentLevel(currentLevel + 1), 800);
       } else {
         toast.success("Level Complete! First part of the key: CU", {
           duration: 5000,
           style: {
             background: "#27272a",
             color: "#fff",
+            fontSize: "1.1rem",
+            padding: "16px",
             borderRadius: "8px",
             boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
           },
         });
-        setTimeout(onSolved, 1000);
+        setTimeout(onSolved, 800);
       }
     } else {
       toast.error("Wrong answer, try again!", {
+        duration: 5000,
         style: {
           background: "#27272a",
           color: "#fff",
+          fontSize: "1.1rem",
+          padding: "16px",
           borderRadius: "8px",
           boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
         },
@@ -114,7 +122,12 @@ export default function Puzzle1({ onSolved }: { onSolved: () => void }) {
           {currentLevelData.title}
         </h2>
         <p className="text-gray-700 dark:text-gray-200 mb-6">
-          {currentLevelData.description}
+          {currentLevelData.description.split('\n').map((line, index) => (
+            <Fragment key={index}>
+              {line}
+              {index < currentLevelData.description.split('\n').length - 1 && <br />}
+            </Fragment>
+          ))}
         </p>
       </div>
       <div className="text-gray-600 dark:text-gray-300 py-4 flex flex-col gap-6">
