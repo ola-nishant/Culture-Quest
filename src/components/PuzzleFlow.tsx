@@ -85,8 +85,8 @@ export default function PuzzleFlow({ onStartMusic, onStopMusic }: { onStartMusic
           </div>
           <p className="max-w-2xl mx-auto text-base md:text-xl text-neutral-700 dark:text-neutral-400 text-center mt-8 relative z-40">
               <strong>Welcome, brave explorer!</strong><br /><br />
-              All the games ahead are inspired by <strong>PI's legendary 4Cs</strong><br /><br />
-              Keep them close to your heart... you'll need them to survive what's coming
+              All the games ahead are inspired by <strong>PI&apos;s legendary 4Cs</strong><br /><br />
+              Keep them close to your heart... you&apos;ll need them to survive what&apos;s coming
               <br /><br />
               <span className="text-black">
               🎮 <strong>Rules of the Game:</strong>  
